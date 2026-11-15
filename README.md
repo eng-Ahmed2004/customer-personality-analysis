@@ -1,105 +1,50 @@
-# Machine Learning Assignment 2 - Applying ML Algorithms
+# Customer Personality Analysis
 
-## Student Information
+Supervised and unsupervised machine learning on the [Customer Personality Analysis](https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis) marketing dataset (2,240 customers). The notebook covers the full workflow: preprocessing, feature engineering, regression, classification, and customer segmentation.
 
-**Name:** Ahmed Moeen Srour
-**Student ID:** 1320221202
+## What the notebook does
 
-## Project Description
+1. **Preprocessing**: median imputation for missing income, removal of unrealistic records, ordinal and one-hot encoding
+2. **Feature engineering**: age, total spending, and other derived customer features
+3. **Regression** on total spending: Linear Regression, Ridge, Decision Tree
+4. **Classification** of campaign response: Logistic Regression, K-Nearest Neighbours, Random Forest
+5. **Clustering**: K-Means with the elbow method, PCA visualisation, and cluster profiling
 
-This project applies supervised and unsupervised machine learning algorithms to the Customer Personality Analysis dataset.
+## Results
 
-The project includes:
+### Regression (target: total spending)
 
-* Data Preprocessing
-* Feature Engineering
-* Regression Models
+| Model | RMSE | R² |
+| --- | --- | --- |
+| Linear Regression | 265.06 | 0.815 |
+| Ridge Regression (alpha = 1) | 265.05 | 0.815 |
+| **Decision Tree (max depth 5)** | **244.43** | **0.843** |
 
-  * Linear Regression
-  * Ridge Regression
-  * Decision Tree Regressor
-* Classification Models
+### Classification (target: campaign response)
 
-  * Logistic Regression
-  * K-Nearest Neighbors
-  * Random Forest
-* K-Means Clustering
-* Performance Evaluation and Visualization
+| Model | Accuracy | Precision | Recall | F1 |
+| --- | --- | --- | --- | --- |
+| **Logistic Regression** | 0.808 | 0.424 | 0.791 | **0.552** |
+| K-Nearest Neighbours (k = 5) | 0.877 | 0.688 | 0.328 | 0.444 |
+| Random Forest (100 trees) | 0.871 | 0.680 | 0.254 | 0.370 |
 
-## Dataset
+The target is imbalanced (about 15% responders), so F1 is the deciding metric rather than accuracy. Logistic Regression finds far more of the actual responders than the other two models.
 
-Download the dataset from Kaggle:
-
-Customer Personality Analysis Dataset
-
-Place the file:
-
-marketing_campaign.csv
-
-
-
-## Requirements
-
-Install the required Python libraries:
+## Run it
 
 ```bash
+git clone https://github.com/eng-Ahmed2004/customer-personality-analysis.git
+cd customer-personality-analysis
 pip install pandas numpy matplotlib seaborn scikit-learn jupyter
+jupyter notebook customer_personality_analysis.ipynb
 ```
 
-## How to Run
+The dataset (`marketing_campaign.csv`) is included in the repository. Run all cells from top to bottom.
 
-### 1. Clone the Repository
+## Tech stack
 
-```bash
-git clone <repository-link>
-```
-
-### 2. Open Project Folder
-
-```bash
-cd repository-name
-```
-
-### 3. Launch Jupyter Notebook
-
-```bash
-jupyter notebook
-```
-
-### 4. Open the Notebook
-
-Open:
-
-```text
-AhmedMoeenSrour_1320221202_Ass(2)InML.ipynb
-```
-
-### 5. Run All Cells
-
-From the Jupyter Notebook menu select:
-
-```text
-Kernel → Restart & Run All
-```
-
-The notebook will:
-
-* Clean and preprocess the dataset.
-* Train regression models.
-* Train classification models.
-* Perform customer segmentation using K-Means.
-* Generate evaluation metrics and visualizations.
-
-## Technologies Used
-
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-Learn
-* Jupyter Notebook
+Python, pandas, NumPy, scikit-learn, Matplotlib, Seaborn, Jupyter Notebook
 
 ## Author
 
-Ahmed Moeen Srour
+Ahmed Srour — [@eng-Ahmed2004](https://github.com/eng-Ahmed2004)
